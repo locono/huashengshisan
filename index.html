@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>花生十三 · huashengshisan.cn</title>
+<meta name="description" content="花生十三 —— 考公、考研课程目录与免费笔记网盘群一站式索引。">
+<meta name="theme-color" content="#FFF6E5">
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%238B4A2B'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='serif' font-size='30' font-weight='700' fill='%23FFF6E5'>花</text></svg>">
+<style>
+:root{
+  --cream:#FFF6E5;
+  --cream-2:#F5E5C4;
+  --cream-3:#EBD9AE;
+  --brown:#8B4A2B;
+  --brown-d:#5C2E18;
+  --red:#C8401F;
+  --gold:#D9A441;
+  --ink:#221C15;
+  --muted:#7A6A5C;
+  --line:rgba(139,74,43,.18);
+  --shadow:0 12px 40px rgba(92,46,24,.12);
+  --shadow-hi:0 20px 60px rgba(92,46,24,.22);
+  --r-lg:22px;
+  --r-md:14px;
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",Georgia,serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono","SF Mono",Menlo,Consolas,monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.65;
+  min-height:100vh;
+  overflow-x:hidden;
+  position:relative;
+  -webkit-font-smoothing:antialiased;
+}
+/* Ambient background: warm radial washes + paper grain */
+body::before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(1000px 700px at 12% 8%, rgba(217,164,65,.20), transparent 60%),
+    radial-gradient(900px 600px at 92% 22%, rgba(200,64,31,.14), transparent 60%),
+    radial-gradient(1100px 800px at 50% 110%, rgba(139,74,43,.16), transparent 60%);
+}
+body::after{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.05;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .22  0 0 0 0 .12  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--brown);color:var(--cream)}
+
+/* ============ NAV ============ */
+.nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:saturate(140%) blur(14px);
+  -webkit-backdrop-filter:saturate(140%) blur(14px);
+  background:rgba(255,246,229,.72);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1240px;margin:0 auto;
+  padding:14px 28px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;gap:24px;
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.logo{
+  width:42px;height:42px;flex:0 0 42px;
+  display:grid;place-items:center;
+  transition:transform .5s cubic-bezier(.2,.9,.3,1.4);
+}
+.brand:hover .logo{transform:rotate(-8deg) scale(1.06)}
+.brand-name{
+  font-family:var(--serif);
+  font-weight:800;font-size:22px;letter-spacing:.06em;
+  color:var(--brown-d);
+  white-space:nowrap;
+}
+.brand-name .thin{font-weight:400;color:var(--brown);opacity:.7;margin-left:6px;font-size:14px;letter-spacing:.2em}
+.nav-links{
+  list-style:none;display:flex;justify-content:center;gap:6px;flex-wrap:wrap;
+}
+.nav-links a{
+  position:relative;
+  display:inline-block;
+  padding:9px 16px;border-radius:999px;
+  font-size:14.5px;font-weight:500;color:var(--brown-d);
+  transition:background .25s,color .25s,transform .25s;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:16px;right:16px;bottom:5px;height:1.5px;
+  background:currentColor;transform:scaleX(0);transform-origin:left;
+  transition:transform .35s cubic-bezier(.2,.9,.3,1);
+}
+.nav-links a:hover{background:rgba(139,74,43,.09);transform:translateY(-1px)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-links a .dot{
+  display:inline-block;width:5px;height:5px;border-radius:50%;
+  background:var(--red);margin-right:7px;vertical-align:middle;
+  opacity:.75;
+}
+.nav-date{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 14px;border-radius:999px;
+  background:var(--brown);color:var(--cream);
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;
+  white-space:nowrap;box-shadow:0 6px 18px rgba(92,46,24,.25);
+}
+.nav-date .pulse{
+  width:6px;height:6px;border-radius:50%;background:var(--gold);
+  box-shadow:0 0 0 0 rgba(217,164,65,.7);
+  animation:pulse 2.2s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(217,164,65,.75)}
+  70%{box-shadow:0 0 0 10px rgba(217,164,65,0)}
+  100%{box-shadow:0 0 0 0 rgba(217,164,65,0)}
+}
+
+/* Mobile nav toggle */
+.nav-toggle{display:none;width:40px;height:40px;border-radius:10px;place-items:center;background:rgba(139,74,43,.1)}
+.nav-toggle span{display:block;width:18px;height:2px;background:var(--brown-d);position:relative;transition:.3s}
+.nav-toggle span::before,.nav-toggle span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--brown-d);transition:.3s}
+.nav-toggle span::before{top:-6px}
+.nav-toggle span::after{top:6px}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;z-index:2;
+  max-width:1240px;margin:0 auto;
+  padding:70px 28px 40px;
+}
+.hero-top{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  gap:24px;margin-bottom:28px;flex-wrap:wrap;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.28em;
+  color:var(--brown);text-transform:uppercase;
+}
+.eyebrow::before{
+  content:"";width:36px;height:1px;background:var(--brown);
+}
+.hero-tag{
+  font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--muted);
+}
+
+.hero-title-wrap{
+  position:relative;
+  padding:20px 0 30px;
+}
+.hero-title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(72px,15.5vw,220px);
+  line-height:.92;
+  letter-spacing:-.02em;
+  color:var(--brown-d);
+  display:flex;align-items:baseline;gap:.04em;flex-wrap:wrap;
+  position:relative;z-index:2;
+}
+.hero-title .ch{
+  display:inline-block;
+  transition:transform .5s cubic-bezier(.2,.9,.3,1.4),color .3s;
+}
+.hero-title .ch:hover{transform:translateY(-10px) rotate(-4deg);color:var(--red)}
+.hero-title .num{
+  font-family:var(--serif);
+  color:var(--red);
+  position:relative;
+}
+.hero-title .num::after{
+  content:"";position:absolute;left:-4%;right:-4%;bottom:8%;height:14%;
+  background:var(--gold);opacity:.45;z-index:-1;border-radius:6px;
+  transform:skewX(-6deg);
+}
+.hero-side{
+  position:absolute;right:0;top:0;
+  writing-mode:vertical-rl;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.5em;
+  color:var(--muted);
+  padding:8px 0;
+}
+.hero-side::before,.hero-side::after{
+  content:"";display:block;width:1px;height:38px;background:var(--line);margin:8px auto;
+}
+
+.hero-domain{
+  margin-top:12px;
+  display:inline-flex;align-items:center;gap:14px;
+  padding:12px 22px 12px 18px;
+  background:var(--ink);color:var(--cream);
+  border-radius:999px;
+  font-family:var(--mono);
+  font-size:clamp(15px,2.2vw,22px);
+  font-weight:600;letter-spacing:.14em;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.hero-domain::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(217,164,65,.25),transparent);
+  transform:translateX(-100%);
+  animation:sweep 4.5s ease-in-out infinite;
+}
+@keyframes sweep{
+  0%,60%{transform:translateX(-100%)}
+  100%{transform:translateX(100%)}
+}
+.hero-domain .dotmark{
+  width:8px;height:8px;border-radius:50%;background:var(--gold);
+  box-shadow:0 0 12px rgba(217,164,65,.7);
+}
+.hero-desc{
+  margin-top:28px;max-width:640px;
+  font-size:16.5px;color:var(--muted);line-height:1.85;
+}
+.hero-desc b{color:var(--brown-d);font-weight:600}
+
+/* peanut decorations */
+.deco{position:absolute;pointer-events:none;z-index:1;opacity:.9}
+.deco-1{top:6%;right:8%;width:110px;animation:float 7s ease-in-out infinite}
+.deco-2{bottom:12%;left:-2%;width:80px;animation:float 9s ease-in-out infinite reverse}
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(-8deg)}
+  50%{transform:translateY(-16px) rotate(6deg)}
+}
+
+/* ============ CARDS ============ */
+.section{
+  position:relative;z-index:2;
+  max-width:1240px;margin:0 auto;
+  padding:40px 28px 20px;
+}
+.section-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:28px;gap:20px;flex-wrap:wrap;
+  border-bottom:1px dashed var(--line);padding-bottom:18px;
+}
+.section-head h2{
+  font-family:var(--serif);font-weight:800;font-size:clamp(28px,4vw,42px);
+  color:var(--brown-d);letter-spacing:.02em;
+}
+.section-head h2 em{font-style:normal;color:var(--red)}
+.section-head .idx{
+  font-family:var(--mono);font-size:12px;letter-spacing:.24em;color:var(--muted);
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+.card{
+  position:relative;
+  display:block;
+  padding:34px 32px 30px;
+  border-radius:var(--r-lg);
+  background:rgba(255,251,240,.85);
+  border:1px solid var(--line);
+  overflow:hidden;
+  transition:transform .45s cubic-bezier(.2,.9,.3,1.2),box-shadow .45s,border-color .3s;
+  isolation:isolate;
+  min-height:230px;
+}
+.card::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:var(--accent,transparent);
+  opacity:0;transition:opacity .45s;
+}
+.card::after{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:6px;
+  background:var(--bar,var(--brown));
+  transform:scaleY(.28);transform-origin:top;
+  transition:transform .5s cubic-bezier(.2,.9,.3,1.2);
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-hi);
+  border-color:transparent;
+}
+.card:hover::before{opacity:.06}
+.card:hover::after{transform:scaleY(1)}
+
+.card-num{
+  font-family:var(--mono);font-size:12px;letter-spacing:.28em;
+  color:var(--bar,var(--brown));opacity:.75;margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.card-num::after{content:"";flex:1;height:1px;background:currentColor;opacity:.3}
+.card h3{
+  font-family:var(--serif);font-weight:800;
+  font-size:clamp(26px,3.2vw,34px);
+  color:var(--brown-d);letter-spacing:.02em;
+  margin-bottom:14px;line-height:1.2;
+}
+.card-tags{
+  display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px;
+}
+.card-tags span{
+  padding:4px 10px;border-radius:6px;
+  font-size:12.5px;color:var(--brown-d);
+  background:rgba(139,74,43,.08);
+  border:1px solid rgba(139,74,43,.12);
+  transition:.25s;
+}
+.card:hover .card-tags span{background:rgba(139,74,43,.14)}
+.card-note{
+  font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:20px;
+}
+.card-cta{
+  position:absolute;right:28px;bottom:24px;
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;
+  color:var(--bar,var(--brown));font-weight:600;
+}
+.card-cta .arrow{
+  display:inline-grid;place-items:center;
+  width:34px;height:34px;border-radius:50%;
+  background:var(--bar,var(--brown));color:var(--cream);
+  transition:transform .4s cubic-bezier(.2,.9,.3,1.4);
+  font-size:15px;
+}
+.card:hover .card-cta .arrow{transform:translate(4px,-4px) rotate(-8deg)}
+
+/* card accents */
+.card-1{--bar:#8B4A2B;--accent:#8B4A2B}
+.card-2{--bar:#C8401F;--accent:#C8401F}
+.card-3{--bar:#D9A441;--accent:#D9A441}
+.card-4{--bar:#2A2622;--accent:#2A2622}
+
+.card-corner{
+  position:absolute;top:22px;right:24px;
+  font-family:var(--mono);font-size:11px;color:var(--muted);
+  letter-spacing:.16em;
+}
+
+/* ============ FOOTER ============ */
+.footer{
+  position:relative;z-index:2;
+  margin-top:60px;
+  background:var(--ink);
+  color:var(--cream);
+  padding:70px 28px 30px;
+  overflow:hidden;
+}
+.footer::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(600px 400px at 15% 20%, rgba(217,164,65,.18), transparent 60%),
+    radial-gradient(500px 400px at 85% 80%, rgba(200,64,31,.14), transparent 60%);
+}
+.footer-inner{
+  max-width:1240px;margin:0 auto;position:relative;
+  display:grid;grid-template-columns:1.1fr 1fr;gap:56px;
+}
+.footer-brand h3{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(38px,5vw,58px);
+  line-height:1.05;letter-spacing:.02em;
+  color:var(--cream);
+}
+.footer-brand h3 em{font-style:normal;color:var(--gold)}
+.footer-domain{
+  margin-top:22px;
+  display:inline-block;
+  padding:14px 26px;
+  background:var(--gold);color:var(--ink);
+  border-radius:14px;
+  font-family:var(--mono);font-weight:700;
+  font-size:clamp(16px,2vw,20px);letter-spacing:.14em;
+  box-shadow:0 10px 30px rgba(217,164,65,.35);
+  transform:rotate(-1.5deg);
+  transition:transform .35s;
+}
+.footer-domain:hover{transform:rotate(1deg) scale(1.02)}
+.footer-brand p{
+  margin-top:22px;color:rgba(255,246,229,.65);font-size:14.5px;max-width:380px;line-height:1.85;
+}
+
+.footer-contact h4{
+  font-family:var(--mono);font-size:12px;letter-spacing:.28em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:20px;
+  display:flex;align-items:center;gap:12px;
+}
+.footer-contact h4::after{content:"";flex:1;height:1px;background:rgba(217,164,65,.3)}
+
+.qq-list{display:flex;flex-direction:column;gap:14px}
+.qq-item{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;
+  padding:18px 20px;
+  background:rgba(255,246,229,.06);
+  border:1px solid rgba(255,246,229,.1);
+  border-radius:var(--r-md);
+  transition:.3s;
+}
+.qq-item:hover{background:rgba(255,246,229,.1);border-color:rgba(217,164,65,.4);transform:translateX(4px)}
+.qq-label{
+  font-family:var(--serif);font-weight:700;font-size:16px;color:var(--gold);
+  padding-right:14px;border-right:1px dashed rgba(255,246,229,.2);
+}
+.qq-body{min-width:0}
+.qq-num{
+  font-family:var(--mono);font-weight:700;
+  font-size:clamp(18px,2.4vw,24px);letter-spacing:.06em;
+  color:var(--cream);cursor:pointer;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:4px 10px;margin-left:-10px;border-radius:8px;
+  transition:background .25s,color .25s;
+  word-break:break-all;
+}
+.qq-num:hover{background:var(--gold);color:var(--ink)}
+.qq-hint{
+  display:block;font-size:12px;color:rgba(255,246,229,.5);
+  margin-top:4px;letter-spacing:.06em;
+}
+.qq-copy-icon{
+  width:22px;height:22px;flex:0 0 22px;opacity:.7;
+}
+.qq-item.copied .qq-num{background:var(--gold);color:var(--ink)}
+.qq-item.copied .qq-hint{color:var(--gold);font-weight:600}
+
+.footer-bottom{
+  max-width:1240px;margin:56px auto 0;
+  padding-top:22px;border-top:1px solid rgba(255,246,229,.1);
+  display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;
+  color:rgba(255,246,229,.5);
+  position:relative;
+}
+.footer-bottom .peanut-mini{display:inline-flex;align-items:center;gap:8px}
+.footer-bottom .peanut-mini svg{width:14px;height:14px}
+
+/* ============ BACK TO TOP ============ */
+.to-top{
+  position:fixed;right:26px;bottom:26px;z-index:60;
+  width:56px;height:56px;border-radius:50%;
+  background:var(--brown);color:var(--cream);
+  display:grid;place-items:center;
+  box-shadow:0 12px 32px rgba(92,46,24,.35);
+  opacity:0;visibility:hidden;transform:translateY(20px) scale(.85);
+  transition:opacity .35s,transform .45s cubic-bezier(.2,.9,.3,1.4),visibility .35s,background .3s;
+  cursor:pointer;
+}
+.to-top.show{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.to-top:hover{background:var(--red);transform:translateY(-4px) scale(1.06)}
+.to-top svg{width:22px;height:22px}
+.to-top::before{
+  content:"";position:absolute;inset:-6px;border-radius:50%;
+  border:1px dashed rgba(139,74,43,.4);
+  animation:spin 12s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ============ TOAST ============ */
+.toast{
+  position:fixed;left:50%;bottom:40px;z-index:100;
+  transform:translate(-50%,30px);
+  padding:14px 26px;border-radius:999px;
+  background:var(--ink);color:var(--cream);
+  font-size:14.5px;letter-spacing:.08em;font-weight:500;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+  opacity:0;visibility:hidden;
+  transition:opacity .3s,transform .4s cubic-bezier(.2,.9,.3,1.4),visibility .3s;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.toast .check{
+  width:20px;height:20px;border-radius:50%;background:var(--gold);color:var(--ink);
+  display:grid;place-items:center;font-size:12px;font-weight:900;
+}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s cubic-bezier(.2,.9,.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:960px){
+  .cards{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr;gap:40px}
+  .hero-side{display:none}
+  .deco-1{width:80px;top:2%;right:4%}
+  .deco-2{width:60px}
+}
+@media (max-width:820px){
+  .nav-inner{grid-template-columns:auto auto;padding:12px 18px;gap:12px}
+  .nav-links{
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:rgba(255,246,229,.98);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+    padding:8px 18px 18px;
+    max-height:0;overflow:hidden;
+    transition:max-height .4s cubic-bezier(.2,.9,.3,1),padding .3s;
+  }
+  .nav-links.open{max-height:340px;padding:8px 18px 18px}
+  .nav-links a{display:block;padding:14px 16px;border-radius:10px;font-size:15px}
+  .nav-toggle{display:grid}
+  .nav-date{font-size:11px;padding:6px 10px;gap:6px}
+  .nav-date .lbl{display:none}
+  .brand-name{font-size:19px}
+  .brand-name .thin{display:none}
+  .hero{padding:44px 20px 24px}
+  .section{padding:28px 20px 12px}
+  .card{padding:26px 22px 26px;min-height:auto}
+  .card-cta{position:static;margin-top:16px;display:inline-flex}
+  .footer{padding:50px 20px 24px}
+  .qq-item{grid-template-columns:1fr;gap:8px;padding:16px}
+  .qq-label{border-right:0;padding-right:0;padding-bottom:6px;border-bottom:1px dashed rgba(255,246,229,.2)}
+  .to-top{right:16px;bottom:16px;width:50px;height:50px}
+  .toast{bottom:88px;font-size:13.5px;padding:12px 20px}
+}
+@media (max-width:420px){
+  .hero-title{font-size:clamp(56px,17vw,90px)}
+  .nav-date{padding:5px 9px}
+  .footer-brand h3{font-size:34px}
+}
+
+/* Animations globally disabled by request */
+*,*::before,*::after{
+  animation:none !important;
+  transition:none !important;
+}
+html{scroll-behavior:auto !important}
+.reveal{opacity:1 !important;transform:none !important}
+.hero-title .ch{opacity:1 !important;transform:none !important}
+.hero-domain::before,
+.to-top::before,
+.nav-date .pulse,
+.deco{animation:none !important}
+.hero-domain::before{display:none !important}
+.to-top::before{display:none !important}
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="花生十三 首页">
+      <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#B36A3F"/>
+            <stop offset="100%" stop-color="#6B3519"/>
+          </linearGradient>
+        </defs>
+        <path d="M32 4c-9 0-15 6-15 14 0 5 2 8 2 12s-3 7-3 13c0 9 7 17 16 17s16-8 16-17c0-6-3-9-3-13s2-7 2-12c0-8-6-14-15-14z" fill="url(#lg)"/>
+        <ellipse cx="24" cy="20" rx="4" ry="5" fill="#FFF6E5" opacity=".22"/>
+        <ellipse cx="40" cy="44" rx="5" ry="6" fill="#FFF6E5" opacity=".16"/>
+        <text x="32" y="40" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="18" font-weight="900" fill="#FFF6E5">十三</text>
+      </svg>
+      <span class="brand-name">花生十三<span class="thin">HUASHENG · 13</span></span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://docs.qq.com/doc/DUEdqVHRidHpKVFFi" target="_blank" rel="noopener noreferrer"><span class="dot"></span>考公课程目录</a></li>
+      <li><a href="https://docs.qq.com/doc/DUGZLbGFEVEpFdVNy" target="_blank" rel="noopener noreferrer"><span class="dot"></span>考研课程目录</a></li>
+      <li><a href="https://docs.qq.com/doc/DUHRPa0JXUkxSTU5h" target="_blank" rel="noopener noreferrer"><span class="dot"></span>免费笔记群</a></li>
+      <li><a href="https://docs.qq.com/doc/DUGZCYVRtSEdPeWFD" target="_blank" rel="noopener noreferrer"><span class="dot"></span>更新日志</a></li>
+    </ul>
+
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="nav-date" id="todayDate" aria-live="polite">
+        <span class="pulse"></span>
+        <span class="lbl">TODAY</span>
+        <span id="dateText">----</span>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<header class="hero" id="top">
+  <!-- decorative peanuts -->
+  <svg class="deco deco-1" viewBox="0 0 100 140" aria-hidden="true">
+    <path d="M50 6c-16 0-26 12-26 26 0 10 5 15 5 22s-6 12-6 24c0 18 12 30 27 30s27-12 27-30c0-12-6-17-6-24s5-12 5-22c0-14-10-26-26-26z" fill="none" stroke="#8B4A2B" stroke-width="2" stroke-dasharray="4 6" opacity=".55"/>
+    <circle cx="38" cy="34" r="3" fill="#C8401F" opacity=".7"/>
+    <circle cx="62" cy="98" r="3" fill="#D9A441" opacity=".7"/>
+  </svg>
+  <svg class="deco deco-2" viewBox="0 0 100 100" aria-hidden="true">
+    <circle cx="50" cy="50" r="42" fill="none" stroke="#C8401F" stroke-width="1.5" opacity=".35"/>
+    <circle cx="50" cy="50" r="30" fill="none" stroke="#8B4A2B" stroke-width="1" stroke-dasharray="2 4" opacity=".45"/>
+    <text x="50" y="56" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="18" font-weight="700" fill="#8B4A2B" opacity=".65">花</text>
+  </svg>
+
+  <div class="hero-top">
+    <div class="eyebrow">HUASHENG SHISAN · LEARNING HUB</div>
+    <div class="hero-tag">考公 / 考研 / 笔记 / 日志</div>
+  </div>
+
+  <div class="hero-title-wrap">
+    <h1 class="hero-title" aria-label="花生十三">
+      <span class="ch">花</span><span class="ch">生</span><span class="ch num">十</span><span class="ch num">三</span>
+    </h1>
+    <div class="hero-side">EST · MMXXVI · 学 而 时 习</div>
+  </div>
+
+  <div class="hero-domain" aria-label="网站域名 huashengshisan.cn">
+    <span class="dotmark"></span>
+    <span>huashengshisan.cn</span>
+  </div>
+
+  <p class="hero-desc">
+    一颗花生，藏十三味学问。这里汇集 <b>考公</b> 与 <b>考研</b> 全科目课程目录、共享 <b>笔记网盘群</b>，以及每一次内容更新的 <b>日志轨迹</b>。点击任一入口，即刻抵达你要的那一页。
+  </p>
+</header>
+
+<!-- ========== CARDS ========== -->
+<section class="section">
+  <div class="section-head reveal">
+    <h2>课程<em>目录</em> · 四大入口</h2>
+    <div class="idx">CHAPTER · 01 / 04</div>
+  </div>
+
+  <div class="cards">
+    <a class="card card-1 reveal" href="https://docs.qq.com/doc/DUEdqVHRidHpKVFFi" target="_blank" rel="noopener noreferrer">
+      <div class="card-corner">DOC · 01</div>
+      <div class="card-num">01 / KAOGONG</div>
+      <h3>考公课程目录</h3>
+      <div class="card-tags">
+        <span>公务员</span><span>国考省考</span><span>教师</span><span>事业</span><span>文职</span>
+        <span>三支</span><span>社工</span><span>英语</span><span>财会</span><span>司法</span>
+      </div>
+      <p class="card-note">公职类考试全科课程索引，覆盖国考、省考、事业单位、教师、军队文职、三支一扶、社工、财会与司法等方向。</p>
+      <div class="card-cta">打开目录 <span class="arrow">↗</span></div>
+    </a>
+
+    <a class="card card-2 reveal" href="https://docs.qq.com/doc/DUGZLbGFEVEpFdVNy" target="_blank" rel="noopener noreferrer">
+      <div class="card-corner">DOC · 02</div>
+      <div class="card-num">02 / KAOYAN</div>
+      <h3>考研课程目录</h3>
+      <div class="card-tags">
+        <span>英语</span><span>数学</span><span>政治</span><span>管理类联考</span><span>专业课</span>
+        <span>笔试</span><span>冲刺</span><span>押题</span><span>复试</span>
+      </div>
+      <p class="card-note">研究生入学考试全阶段课程索引，从基础笔试到冲刺押题，再到复试环节，一路相伴。</p>
+      <div class="card-cta">打开目录 <span class="arrow">↗</span></div>
+    </a>
+
+    <a class="card card-3 reveal" href="https://docs.qq.com/doc/DUHRPa0JXUkxSTU5h" target="_blank" rel="noopener noreferrer">
+      <div class="card-corner">DOC · 03</div>
+      <div class="card-num">03 / NOTE GROUP</div>
+      <h3>免费笔记网盘群</h3>
+      <div class="card-tags">
+        <span>网盘共享</span><span>笔记资料</span><span>持续更新</span><span>加入即得</span>
+      </div>
+      <p class="card-note">加入笔记网盘共享群，与同行者一起沉淀资料、交换心得，让每一份努力都有处安放。</p>
+      <div class="card-cta">加入群聊 <span class="arrow">↗</span></div>
+    </a>
+
+    <a class="card card-4 reveal" href="https://docs.qq.com/doc/DUGZCYVRtSEdPeWFD" target="_blank" rel="noopener noreferrer">
+      <div class="card-corner">DOC · 04</div>
+      <div class="card-num">04 / CHANGELOG</div>
+      <h3>课程更新日志</h3>
+      <div class="card-tags">
+        <span>版本记录</span><span>上新轨迹</span><span>修订说明</span><span>时间线</span>
+      </div>
+      <p class="card-note">每一次课程上新、每一处内容修订，都在这里留下印记。查看最新变更，不错过任何一次进度。</p>
+      <div class="card-cta">查看日志 <span class="arrow">↗</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand reveal">
+      <h3>花生<em>十三</em><br>HUASHENG SHISAN</h3>
+      <div class="footer-domain">huashengshisan.cn</div>
+      <p>一颗花生，十三味学问。<br>愿你在此找到需要的每一份课程与笔记。</p>
+    </div>
+
+    <div class="footer-contact reveal">
+      <h4>Contact · 联系 QQ</h4>
+      <div class="qq-list">
+        <div class="qq-item" data-qq="1620668378">
+          <div class="qq-label">考公 QQ</div>
+          <div class="qq-body">
+            <span class="qq-num" role="button" tabindex="0" aria-label="点击复制考公QQ 1620668378">
+              1620668378
+              <svg class="qq-copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="12" height="12" rx="2"/>
+                <path d="M5 15V5a2 2 0 0 1 2-2h10"/>
+              </svg>
+            </span>
+            <small class="qq-hint">点击 QQ 可以复制</small>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="qq-item" data-qq="1024687680">
+          <div class="qq-label">考研 QQ</div>
+          <div class="qq-body">
+            <span class="qq-num" role="button" tabindex="0" aria-label="点击复制考研QQ 1024687680">
+              1024687680
+              <svg class="qq-copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="12" height="12" rx="2"/>
+                <path d="M5 15V5a2 2 0 0 1 2-2h10"/>
+              </svg>
+            </span>
+            <small class="qq-hint">点击 QQ 可以复制</small>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="peanut-mini">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c-3.5 0-6 2.4-6 5.4 0 2 1 3 1 4.5S6 15 6 17.5C6 20.5 8.7 22 12 22s6-1.5 6-4.5c0-2.5-1-3.6-1-5.1s1-2.5 1-4.5C18 4.4 15.5 2 12 2z"/></svg>
+      <span>© <span id="year">2026</span> 花生十三 · HUASHENG SHISAN</span>
+    </div>
+    <div>MADE WITH ♥ FOR LEARNERS</div>
+  </div>
+</footer>
+
+<!-- ========== BACK TO TOP ========== -->
+<button class="to-top" id="toTop" aria-label="返回顶部" title="返回顶部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5"/>
+    <path d="M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<!-- ========== TOAST ========== -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <span class="check">✓</span>
+  <span id="toastText">QQ 已复制</span>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- 今日日期 ---------- */
+  var WEEK = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+  function pad(n){return n<10?'0'+n:''+n}
+  function renderDate(){
+    var d = new Date();
+    var s = d.getFullYear() + '.' + pad(d.getMonth()+1) + '.' + pad(d.getDate()) + ' ' + WEEK[d.getDay()];
+    var el = document.getElementById('dateText');
+    if(el) el.textContent = s;
+    var y = document.getElementById('year');
+    if(y) y.textContent = d.getFullYear();
+  }
+  renderDate();
+  // 每分钟刷新一次，跨零点自动更新
+  setInterval(renderDate, 60000);
+
+  /* ---------- 移动端菜单 ---------- */
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if(toggle && links){
+    toggle.addEventListener('click', function(){
+      var open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.addEventListener('click', function(e){
+      if(e.target.tagName === 'A'){
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  /* ---------- 返回顶部 ---------- */
+  var toTop = document.getElementById('toTop');
+  function onScroll(){
+    if(window.scrollY > 320){ toTop.classList.add('show'); }
+    else{ toTop.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  toTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* ---------- 卡片进入动画 ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold:.14, rootMargin:'0px 0px -60px 0px'});
+    reveals.forEach(function(el,i){
+      el.style.transitionDelay = (i%4)*70 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- QQ 复制 ---------- */
+  var toast = document.getElementById('toast');
+  var toastText = document.getElementById('toastText');
+  var toastTimer = null;
+  function showToast(msg){
+    toastText.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 1800);
+  }
+  function fallbackCopy(text){
+    try{
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly','');
+      ta.style.position = 'fixed';
+      ta.style.top = '-1000px';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, text.length);
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    }catch(e){ return false; }
+  }
+  function copyQQ(qq, item){
+    var done = function(ok){
+      if(ok){
+        if(item){
+          item.classList.add('copied');
+          var hint = item.querySelector('.qq-hint');
+          if(hint) hint.textContent = 'QQ 已复制';
+          setTimeout(function(){
+            item.classList.remove('copied');
+            if(hint) hint.textContent = '点击 QQ 可以复制';
+          }, 2400);
+        }
+        showToast('QQ 已复制：' + qq);
+      } else {
+        showToast('复制失败，请手动记录：' + qq);
+      }
+    };
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(qq).then(function(){done(true)}).catch(function(){ done(fallbackCopy(qq)); });
+    } else {
+      done(fallbackCopy(qq));
+    }
+  }
+  document.querySelectorAll('.qq-item').forEach(function(item){
+    var qq = item.getAttribute('data-qq');
+    var trigger = item.querySelector('.qq-num');
+    trigger.addEventListener('click', function(){ copyQQ(qq, item); });
+    trigger.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        copyQQ(qq, item);
+      }
+    });
+  });
+
+  /* ---------- 大标题字符（无动画） ---------- */
+})();
+</script>
+</body>
+</html>
